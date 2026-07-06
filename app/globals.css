@@ -1,0 +1,185 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-glow: var(--glow);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+}
+
+:root {
+  color-scheme: dark;
+  /* Deep graphite base with metallic depth */
+  --background: #181a1f;
+  --foreground: #eef1f5;
+
+  --card: #20242b;
+  --card-foreground: #eef1f5;
+  --popover: #20242b;
+  --popover-foreground: #eef1f5;
+
+  /* Metallic blue accent */
+  --primary: #9db4d4;
+  --primary-foreground: #14161a;
+
+  --secondary: #262b33;
+  --secondary-foreground: #eef1f5;
+
+  --muted: #22262d;
+  --muted-foreground: #8b93a1;
+
+  --accent: #6f8fc0;
+  --accent-foreground: #0f1115;
+
+  --glow: #7fa6e0;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #6f8fc0;
+
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'ss01', 'cv01';
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: color-mix(in oklab, var(--card) 70%, transparent);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-strong {
+    background: color-mix(in oklab, var(--card) 85%, transparent);
+    backdrop-filter: blur(28px) saturate(150%);
+    -webkit-backdrop-filter: blur(28px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 40px rgba(127, 166, 224, 0.35);
+  }
+
+  .metallic-border {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--card), var(--card)) padding-box,
+      linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02) 45%, rgba(127, 166, 224, 0.12)) border-box;
+  }
+}
+
+/* Cinematic ambient light beams */
+@keyframes beam-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate3d(6%, 4%, 0) rotate(-4deg);
+    opacity: 0.55;
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 0.82;
+  }
+  96% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes track-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-beam {
+  animation: beam-drift 16s ease-in-out infinite;
+}
+.animate-flicker {
+  animation: flicker 6s linear infinite;
+}
+.animate-reveal {
+  animation: reveal-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}

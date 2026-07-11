@@ -10,12 +10,12 @@ const posters = [
   { title: 'Shirt & Hoodie Posters', caption: 'High-fashion text · raw textures', src: '/commercial/poster-hoodie.png' },
 ]
 
-// Aap ke 4 naye banners ka data
+// Sahi path set kar diya hai commercial folder ka
 const sliderBanners = [
-  { id: 1, src: '/banner-1.png', alt: 'AYRA AI Studio Commercial Banner 1' },
-  { id: 2, src: '/banner-2.png', alt: 'AYRA AI Studio Commercial Banner 2' },
-  { id: 3, src: '/banner-3.png', alt: 'AYRA AI Studio Commercial Banner 3' },
-  { id: 4, src: '/banner-4.png', alt: 'AYRA AI Studio Commercial Banner 4' },
+  { id: 1, src: '/commercial/banner-1.png', alt: 'AYRA AI Studio Commercial Banner 1' },
+  { id: 2, src: '/commercial/banner-2.png', alt: 'AYRA AI Studio Commercial Banner 2' },
+  { id: 3, src: '/commercial/banner-3.png', alt: 'AYRA AI Studio Commercial Banner 3' },
+  { id: 4, src: '/commercial/banner-4.png', alt: 'AYRA AI Studio Commercial Banner 4' },
 ]
 
 export function CommercialShowcase() {
@@ -38,7 +38,7 @@ export function CommercialShowcase() {
           description="A hyper-clean studio suite built on heavy typography integration, crisp product layouts, and bold visual hierarchy."
         />
 
-        {/* Premium product posters (Yeh bilkul pehle jaisa hi hai) */}
+        {/* Premium product posters */}
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {posters.map((p, i) => (
             <Reveal key={p.title} delay={i * 120}>
@@ -81,7 +81,7 @@ export function CommercialShowcase() {
                 ))}
               </div>
 
-              {/* Gradient Overlay for Sleek Premium Look */}
+              {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
 
               {/* Navigation Dots */}

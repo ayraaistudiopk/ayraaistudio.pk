@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react'
 import { SectionHeading } from './section-heading'
 import { Reveal } from './reveal'
 
+// Data ko clean kar diya hai, titles aur captions hata diye hain
 const posters = [
-  { title: 'Watch Posters', caption: 'Sleek layout · precise spec typography', src: '/commercial/poster-watch.png' },
-  { title: 'Perfume Posters', caption: 'Atmospheric · elegant serif text', src: '/commercial/poster-perfume.png' },
-  { title: 'Shirt & Hoodie Posters', caption: 'High-fashion text · raw textures', src: '/commercial/poster-hoodie.png' },
+  { id: 1, src: '/commercial/poster-watch.png' },
+  { id: 2, src: '/commercial/poster-perfume.png' },
+  { id: 3, src: '/commercial/poster-hoodie.png' },
 ]
 
-// Sahi path set kar diya hai commercial folder ka
 const sliderBanners = [
   { id: 1, src: '/commercial/banner-1.png', alt: 'AYRA AI Studio Commercial Banner 1' },
   { id: 2, src: '/commercial/banner-2.png', alt: 'AYRA AI Studio Commercial Banner 2' },
@@ -21,7 +21,6 @@ const sliderBanners = [
 export function CommercialShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  // Automatic slide change every 3 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % sliderBanners.length)
@@ -38,28 +37,25 @@ export function CommercialShowcase() {
           description="A hyper-clean studio suite built on heavy typography integration, crisp product layouts, and bold visual hierarchy."
         />
 
-        {/* Premium product posters */}
+        {/* Clean & Premium product posters without text overlay */}
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {posters.map((p, i) => (
-            <Reveal key={p.title} delay={i * 120}>
-              <figure className="group relative aspect-[3/4] overflow-hidden rounded-2xl ring-1 ring-inset ring-white/10">
+            <Reveal key={p.id} delay={i * 120}>
+              <figure className="group relative aspect-[3/4] overflow-hidden rounded-2xl ring-1 ring-inset ring-white/10 bg-neutral-900">
                 <img
                   src={p.src || '/placeholder.svg'}
-                  alt={`${p.title} — ${p.caption}`}
+                  alt={`AYRA AI Studio Commercial Poster ${p.id}`}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
-                <figcaption className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="font-display text-lg font-light text-foreground">{p.title}</p>
-                  <p className="mt-1 text-xs font-light text-muted-foreground">{p.caption}</p>
-                </figcaption>
+                {/* Visual smooth dim overlay on hover */}
+                <div className="absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
               </figure>
             </Reveal>
           ))}
         </div>
 
-        {/* New 16:9 Premium Carousel Slider */}
+        {/* 16:9 Premium Carousel Slider */}
         <div className="mt-5">
           <Reveal>
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl ring-1 ring-inset ring-white/10">

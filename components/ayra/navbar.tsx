@@ -33,8 +33,8 @@ export function Navbar() {
       >
         <a href="#top" className="flex items-center gap-2" aria-label="AYRA AI Studio home">
           <img
-            src="/favicon-ayra.png"
-            alt=""
+            src="/ayra-logo-original.png"
+            alt="AYRA AI Studio Logo"
             className="h-7 w-7 rounded-md object-cover ring-1 ring-white/10"
           />
           <Wordmark className="text-lg text-foreground" />

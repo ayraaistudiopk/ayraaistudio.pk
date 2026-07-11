@@ -1,3 +1,5 @@
+'use client'
+
 import { Mail } from 'lucide-react'
 import { Wordmark } from './wordmark'
 
@@ -55,8 +57,8 @@ export function Footer() {
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
               <img
-                src="/favicon-ayra.png"
-                alt=""
+                src="/ayra-logo-original.png"
+                alt="AYRA AI Studio Logo"
                 className="h-9 w-9 rounded-lg object-cover ring-1 ring-white/10"
               />
               <Wordmark className="text-2xl text-foreground" showStudio />

@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     'AYRA AI Studio operates at the intersection of creativity, engineering, and artificial intelligence — building intelligent systems that help modern brands grow, automate, and dominate.',
   generator: 'v0.app',
   icons: {
-    icon: [{ url: '/icon.png', type: 'image/png' }],
-    apple: '/apple-icon.png',
+    icon: [{ url: '/ayra-logo-original.png', type: 'image/png' }],
+    apple: '/ayra-logo-original.png',
   },
   openGraph: {
     title: 'AYRA AI Studio — Intelligence That Builds Brands',
